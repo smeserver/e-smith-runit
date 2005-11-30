@@ -1,0 +1,59 @@
+Index: e-smith-runit/e-smith-runit.spec
+diff -u e-smith-runit/root/etc/rc.d/init.d/daemontools:1.2 e-smith-runit/root/etc/rc.d/init.d/daemontools:1.3
+--- e-smith-runit/root/etc/rc.d/init.d/daemontools:1.2	Wed Dec  1 21:46:27 2004
++++ e-smith-runit/root/etc/rc.d/init.d/daemontools	Wed Jun 15 12:36:33 2005
+@@ -80,44 +80,44 @@
+ case $1 in
+ 
+     restart)
+-	/usr/bin/runsvctrl t $SERVICE_DIR
++	action "Restarting $SERVICE" /usr/bin/runsvctrl t $SERVICE_DIR
+ 	/usr/bin/runsvctrl u $SERVICE_DIR
+             ;;
+ 
+     sigalrm)
+-	/usr/bin/runsvctrl a $SERVICE_DIR
++	action "Sending ALRM signal to $SERVICE" /usr/bin/runsvctrl a $SERVICE_DIR
+             ;;
+ 
+     sigcont)
+-	/usr/bin/runsvctrl c $SERVICE_DIR
++	action "Sending CONT signal to $SERVICE" /usr/bin/runsvctrl c $SERVICE_DIR
+             ;;
+ 
+     sighup)
+-	/usr/bin/runsvctrl h $SERVICE_DIR
++	action "Sending HUP signal to $SERVICE" /usr/bin/runsvctrl h $SERVICE_DIR
+             ;;
+ 
+     sigusr1)
+-	/usr/bin/runsvctrl 1 $SERVICE_DIR
++	action "Sending USR1 signal to $SERVICE" /usr/bin/runsvctrl 1 $SERVICE_DIR
+             ;;
+ 
+     sigusr2)
+-	/usr/bin/runsvctrl 2 $SERVICE_DIR
++	action "Sending USR2 signal to $SERVICE" /usr/bin/runsvctrl 2 $SERVICE_DIR
+             ;;
+ 
+     sigint)
+-	/usr/bin/runsvctrl i $SERVICE_DIR
++	action "Sending INT signal to $SERVICE" /usr/bin/runsvctrl i $SERVICE_DIR
+             ;;
+ 
+     sigkill)
+-	/usr/bin/runsvctrl k $SERVICE_DIR
++	action "Sending KILL signal to $SERVICE" /usr/bin/runsvctrl k $SERVICE_DIR
+             ;;
+ 
+     sigstop)
+-	/usr/bin/runsvctrl p $SERVICE_DIR
++	action "Sending STOP signal to $SERVICE" /usr/bin/runsvctrl p $SERVICE_DIR
+             ;;
+ 
+     sigterm)
+-	/usr/bin/runsvctrl t $SERVICE_DIR
++	action "Sending TERM signal to $SERVICE" /usr/bin/runsvctrl t $SERVICE_DIR
+             ;;
+ 
+     status)
