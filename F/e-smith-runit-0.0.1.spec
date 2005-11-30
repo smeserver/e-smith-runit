@@ -2,7 +2,7 @@ Summary: generic support framework for Gerrit Pape's runit package
 %define name e-smith-runit
 Name: %{name}
 %define version 0.0.1
-%define release 05
+%define release 06
 Version: %{version}
 Release: %{release}
 License: GPL
@@ -21,6 +21,9 @@ Obsoletes: e-smith-daemontools
 Obsoletes: supervise-scripts
 
 %changelog
+* Wed Nov 30 2005 Gordon Rowell <gordonr@gormand.com.au> 0.0.1-06
+- Bump release number only
+
 * Wed Jun 15 2005 Charlie Brady <charlieb@e-smith.com>
 - [0.0.1-05]
 - Provide more user feedback from init.d/daemontools script.
