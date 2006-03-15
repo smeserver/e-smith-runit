@@ -1,16 +1,13 @@
 Summary: generic support framework for Gerrit Pape's runit package
 %define name e-smith-runit
 Name: %{name}
-%define version 0.0.1
-%define release 06
+%define version 1.0.0
+%define release 01
 Version: %{version}
 Release: %{release}
 License: GPL
 Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
-Patch0: e-smith-runit-0.0.1-03.mitel_patch
-Patch1: e-smith-runit-0.0.1-04.mitel_patch
-Patch2: e-smith-runit-0.0.1-05.mitel_patch
 Packager: e-smith developers <bugs@e-smith.com>
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 BuildRequires: e-smith-devtools
@@ -21,6 +18,9 @@ Obsoletes: e-smith-daemontools
 Obsoletes: supervise-scripts
 
 %changelog
+* Wed Mar 15 2006 Charlie Brady <charlie_brady@mitel.com> 1.0.0-01
+- Roll stable stream version. [SME: 1016]
+
 * Wed Nov 30 2005 Gordon Rowell <gordonr@gormand.com.au> 0.0.1-06
 - Bump release number only
 
@@ -52,9 +52,6 @@ process environment.
 
 %prep
 %setup
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
 perl createlinks
