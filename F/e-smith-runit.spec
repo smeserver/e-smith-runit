@@ -2,12 +2,13 @@ Summary: generic support framework for Gerrit Pape's runit package
 %define name e-smith-runit
 Name: %{name}
 %define version 1.0.0
-%define release 01
+%define release 02
 Version: %{version}
 Release: %{release}
 License: GPL
 Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
+Patch0: e-smith-runit-1.0.0-condrestart.patch
 Packager: e-smith developers <bugs@e-smith.com>
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 BuildRequires: e-smith-devtools
@@ -18,6 +19,9 @@ Obsoletes: e-smith-daemontools
 Obsoletes: supervise-scripts
 
 %changelog
+* Tue Aug 22 2006 Charlie Brady <charlie_brady@mitel.com> 1.0.0-02
+- Add support for 'condrestart' param. [SME: 1870]
+
 * Wed Mar 15 2006 Charlie Brady <charlie_brady@mitel.com> 1.0.0-01
 - Roll stable stream version. [SME: 1016]
 
@@ -52,6 +56,7 @@ process environment.
 
 %prep
 %setup
+%patch0 -p1
 
 %build
 perl createlinks
