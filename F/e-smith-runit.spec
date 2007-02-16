@@ -2,7 +2,7 @@ Summary: generic support framework for Gerrit Pape's runit package
 %define name e-smith-runit
 Name: %{name}
 %define version 1.0.0
-%define release 4
+%define release 5
 Version: %{version}
 Release: %smerelease %{release}
 Packager: %{_packager}
@@ -11,6 +11,7 @@ Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
 Patch0: e-smith-runit-1.0.0-condrestart.patch
 Patch1: e-smith-runit-1.0.0-runit17.patch
+Patch2: e-smith-runit-1.0.0-runit17.patch2
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 BuildRequires: e-smith-devtools
 BuildArchitectures: noarch
@@ -20,6 +21,9 @@ Obsoletes: e-smith-daemontools
 Obsoletes: supervise-scripts
 
 %changelog
+* Fri Feb 16 2007 Shad L. Lords <slords@mail.com> 1.0.0-5
+- Fix signals sent to prevent errors and delays
+
 * Fri Feb 16 2007 Shad L. Lords <slords@mail.com> 1.0.0-4
 - Change runsvctrl to sv to support runit v1.7.x
 
@@ -66,6 +70,7 @@ process environment.
 %setup
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 perl createlinks
