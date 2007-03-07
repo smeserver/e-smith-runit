@@ -22,10 +22,10 @@ Obsoletes: supervise-scripts
 
 %changelog
 * Fri Feb 16 2007 Shad L. Lords <slords@mail.com> 1.0.0-5
-- Fix signals sent to prevent errors and delays
+- Fix signals sent to prevent errors and delays [SME: 1179]
 
 * Fri Feb 16 2007 Shad L. Lords <slords@mail.com> 1.0.0-4
-- Change runsvctrl to sv to support runit v1.7.x
+- Change runsvctrl to sv to support runit v1.7.x [SME: 1179]
 
 * Thu Dec 07 2006 Shad L. Lords <slords@mail.com>
 - Update to new release naming.  No functional changes.
