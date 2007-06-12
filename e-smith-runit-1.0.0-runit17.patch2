@@ -1,0 +1,72 @@
+diff -Nur -x '*.orig' -x '*.rej' e-smith-runit-1.0.0/root/etc/rc.d/init.d/daemontools mezzanine_patched_e-smith-runit-1.0.0/root/etc/rc.d/init.d/daemontools
+--- e-smith-runit-1.0.0/root/etc/rc.d/init.d/daemontools	2007-02-16 13:42:54.000000000 -0700
++++ mezzanine_patched_e-smith-runit-1.0.0/root/etc/rc.d/init.d/daemontools	2007-02-16 13:41:56.000000000 -0700
+@@ -29,7 +29,7 @@
+     if [ -d $1/log ]; then
+         dirs="$1/log $1"
+     fi
+-    /usr/bin/sv start $dirs > /dev/null
++    /usr/bin/sv u $dirs > /dev/null
+     if [ $? -ne 0 ]; then
+         failure "Starting $SERVICE"
+     else
+@@ -62,8 +62,8 @@
+     if [ -e log ]; then
+         dirs="$dirs ./log"
+     fi
+-    /usr/bin/sv stop $dirs
+-    /usr/bin/sv exit $dirs
++    /usr/bin/sv d $dirs
++    /usr/bin/sv x $dirs
+     if [ $? -ne 0 ]; then
+         failure "Disabling $SERVICE"
+     else
+@@ -75,19 +75,20 @@
+ case $1 in
+ 
+     restart)
+-	action "Restarting $SERVICE" /usr/bin/sv restart $SERVICE_DIR
++	action "Restarting $SERVICE" /usr/bin/sv t $SERVICE_DIR
++	/usr/bin/sv u $SERVICE_DIR
+             ;;
+ 
+     sigalrm)
+-	action "Sending ALRM signal to $SERVICE" /usr/bin/sv alarm $SERVICE_DIR
++	action "Sending ALRM signal to $SERVICE" /usr/bin/sv a $SERVICE_DIR
+             ;;
+ 
+     sigcont)
+-	action "Sending CONT signal to $SERVICE" /usr/bin/sv cont $SERVICE_DIR
++	action "Sending CONT signal to $SERVICE" /usr/bin/sv c $SERVICE_DIR
+             ;;
+ 
+     sighup)
+-	action "Sending HUP signal to $SERVICE" /usr/bin/sv hup $SERVICE_DIR
++	action "Sending HUP signal to $SERVICE" /usr/bin/sv h $SERVICE_DIR
+             ;;
+ 
+     sigusr1)
+@@ -99,19 +100,19 @@
+             ;;
+ 
+     sigint)
+-	action "Sending INT signal to $SERVICE" /usr/bin/sv interrupt $SERVICE_DIR
++	action "Sending INT signal to $SERVICE" /usr/bin/sv i $SERVICE_DIR
+             ;;
+ 
+     sigkill)
+-	action "Sending KILL signal to $SERVICE" /usr/bin/sv kill $SERVICE_DIR
++	action "Sending KILL signal to $SERVICE" /usr/bin/sv k $SERVICE_DIR
+             ;;
+ 
+     sigstop)
+-	action "Sending STOP signal to $SERVICE" /usr/bin/sv pause $SERVICE_DIR
++	action "Sending STOP signal to $SERVICE" /usr/bin/sv p $SERVICE_DIR
+             ;;
+ 
+     sigterm|condrestart)
+-	action "Sending TERM signal to $SERVICE" /usr/bin/sv term $SERVICE_DIR
++	action "Sending TERM signal to $SERVICE" /usr/bin/sv t $SERVICE_DIR
+             ;;
+ 
+     status)
