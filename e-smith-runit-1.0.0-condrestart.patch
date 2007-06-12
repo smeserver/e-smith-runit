@@ -1,0 +1,21 @@
+diff -Nur -x '*.orig' -x '*.rej' e-smith-runit-1.0.0/root/etc/rc.d/init.d/daemontools mezzanine_patched_e-smith-runit-1.0.0/root/etc/rc.d/init.d/daemontools
+--- e-smith-runit-1.0.0/root/etc/rc.d/init.d/daemontools	2006-03-15 15:12:55.000000000 -0500
++++ mezzanine_patched_e-smith-runit-1.0.0/root/etc/rc.d/init.d/daemontools	2006-08-22 02:57:36.000000000 -0400
+@@ -116,7 +116,7 @@
+ 	action "Sending STOP signal to $SERVICE" /usr/bin/runsvctrl p $SERVICE_DIR
+             ;;
+ 
+-    sigterm)
++    sigterm|condrestart)
+ 	action "Sending TERM signal to $SERVICE" /usr/bin/runsvctrl t $SERVICE_DIR
+             ;;
+ 
+@@ -137,7 +137,7 @@
+             ;;
+ 
+     *)
+-        echo "usage: $0 {start|stop|restart|status|sigalrm|sigcont|sighup|sigint|sigkill|sigstop|sigterm|sigusr1|sigusr2|svdisable}"
++        echo "usage: $0 {start|stop|restart|status|sigalrm|sigcont|sighup|sigint|sigkill|sigstop|sigterm|condrestart|sigusr1|sigusr2|svdisable}"
+         ;;
+ 
+ esac
