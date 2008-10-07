@@ -1,17 +1,15 @@
+# $Id: e-smith-runit.spec,v 1.3 2008/10/07 19:18:54 slords Exp $
+
 Summary: generic support framework for Gerrit Pape's runit package
 %define name e-smith-runit
 Name: %{name}
-%define version 1.0.0
-%define release 6
+%define version 2.2.0
+%define release 1
 Version: %{version}
 Release: %{release}%{?dist}
 License: GPL
 Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
-Patch0: e-smith-runit-1.0.0-condrestart.patch
-Patch1: e-smith-runit-1.0.0-runit17.patch
-Patch2: e-smith-runit-1.0.0-runit17.patch2
-Patch3: e-smith-runit-1.0.0-localization.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 BuildRequires: e-smith-devtools
 BuildArchitectures: noarch
@@ -21,6 +19,9 @@ Obsoletes: e-smith-daemontools
 Obsoletes: supervise-scripts
 
 %changelog
+* Tue Oct 7 2008 Shad L. Lords <slords@mail.com> 2.2.0-1.sme
+- Roll new stream to separate sme7/sme8 trees [SME: 4633]
+
 * Wed Mar 26 2008 Shad L. Lords <slords@mail.com> 1.0.0-6
 - Make daemontools script use same echo that is translated [SME: 4120]
 
@@ -74,10 +75,6 @@ process environment.
 
 %prep
 %setup
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
 perl createlinks
